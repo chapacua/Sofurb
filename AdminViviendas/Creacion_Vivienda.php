@@ -11,27 +11,54 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   <!-- ... -->
-  <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
-  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
   <script src="datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+
+window.onload = function () {
+
+// Variable global por estar declarada sin hacer uso de var
+
+elementosEnForm = document.forms['FormuUsuario'].elements;
+
+for (var i=0; i< elementosEnForm.length; i++) {
+                if (elementosEnForm[i].type != 'checkbox') {elementosEnForm[i].disabled = true;}
+                else {elementosEnForm[i].addEventListener('click', activarElementos);}
+ }
+}
+function activarElementos() { for (var i=0; i<elementosEnForm.length; i++) {elementosEnForm[i].disabled=false;} }
+
+</script>
+
   <script>
         $(function(){
           $('.datepicker').datepicker();
         });
   </script>
-  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+
   <link rel="stylesheet" href="datepicker/css/datepicker.css">
 </head>
 <body>
-<form class="form-horizontal" name="fomulario">
+
 <fieldset>
 
 <!-- Form Name -->
-<legend>Ingreso Vivienda</legend>
+<legend>Propietario</legend>
 
+<form name ="FormuUsuario" class="form-horizontal">
+
+<div class="form-group">
+  <div class="checkbox">
+    <div class='input-group date' id='datetimepicker1'>
+      <label>
+      <input type="checkbox" name="tratamiento" id="Modifica" value="si" />
+      <span class="input-group-addon">
+      <span class=" glyphicon glyphicon-pencil"></span>
+    </span>
+    </label>
+  </div>
+</div>
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="NombreProp">ID</label>  
